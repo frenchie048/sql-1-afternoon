@@ -1,7 +1,7 @@
-CREATE TABLE Orders ( 
-    id SERIAL PRIMARY KEY
-    , personid INTEGER
-    , productname TEXT
-    , productprice FLOAT
-    , quantity INTEGER 
+create table Orders (
+    id serial primary key
+    , personid integer
+    , productname text
+    , productprice float
+    , quantity integer
 );

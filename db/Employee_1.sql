@@ -1,1 +1,2 @@
-SELECT "FirstName", "LastName" FROM "Employee" WHERE "City" = 'Calgary';
+select "FirstName", "LastName" from "Employee"
+    where "City" = 'Calgary';

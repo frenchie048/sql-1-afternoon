@@ -1,1 +1,3 @@
-SELECT "FirstName", "LastName", "BirthDate" FROM "Employee" WHERE "BirthDate" = (SELECT max("BirthDate") FROM "Employee");
+select "FirstName", "LastName", "BirthDate" from "Employee"
+    order by "BirthDate" desc
+    limit 1;

@@ -1,1 +1,1 @@
-SELECT SUM(quantity) FROM Orders;
+select sum(quantity) from Orders;

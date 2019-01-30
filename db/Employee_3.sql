@@ -1,1 +1,3 @@
-SELECT "FirstName", "LastName", "BirthDate" FROM "Employee" WHERE "BirthDate" = (SELECT min("BirthDate") FROM "Employee");
+select "FirstName", "LastName", "BirthDate" from "Employee"
+    order by "BirthDate" asc
+    limit 1;

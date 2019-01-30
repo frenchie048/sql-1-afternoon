@@ -1,1 +1,2 @@
-SELECT * FROM Person WHERE Age > 20;
+select * from Person
+    where age > 20;

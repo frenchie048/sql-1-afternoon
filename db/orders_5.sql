@@ -1,1 +1,1 @@
-SELECT SUM(productprice * quantity) FROM Orders;
+select sum(productprice * quantity)  from Orders;

@@ -1,1 +1,2 @@
-SELECT Count(*) FROM "Invoice" WHERE "BillingState" in ('CA', 'TX', 'AZ');
+select count(*) from "Invoice"
+    where "BillingState" in ('CA', 'TX', 'AZ');

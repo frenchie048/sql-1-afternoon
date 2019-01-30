@@ -1,1 +1,2 @@
-SELECT COUNT(*) FROM "Employee" WHERE "City" = 'Lethbridge';
+select count(*) from "Employee"
+    where "City" = 'Lethbridge';

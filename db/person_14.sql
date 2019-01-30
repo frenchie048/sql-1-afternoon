@@ -1,1 +1,2 @@
-SELECT * FROM Person WHERE LOWER(city) IN ( LOWER('Irving'), LOWER('LA'));
+select * from Person
+    where city in ('Irving', 'LA');

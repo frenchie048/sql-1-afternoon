@@ -1,1 +1,2 @@
-DELETE FROM "Employee" WHERE "FirstName" = 'Andrew' AND "LastName" = 'Adams';
+delete from "Employee" 
+    where "FirstName" = 'Andrew' and "LastName" = 'Adams';

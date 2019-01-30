@@ -1,1 +1,2 @@
-SELECT SUM(productprice * quantity) FROM Orders WHERE personid = 1;
+select sum(productprice * quantity) from Orders
+    where personid = 1;

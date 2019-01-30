@@ -1,1 +1,1 @@
-SELECT Max("Total") FROM "Invoice";
+select max("Total") from "Invoice";

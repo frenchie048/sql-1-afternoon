@@ -1,1 +1,1 @@
-SELECT AVG("Total") FROM "Invoice";
+select avg("Total") from "Invoice";

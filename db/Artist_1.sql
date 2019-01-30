@@ -1,6 +1,4 @@
-INSERT INTO "Artist" 
-( "ArtistId", "Name" ) 
-VALUES 
-(276,'Artist Name' ) 
-, (277,'Artist Name' )
-, (278,'Artist Name' );
+insert into "Artist" (ArtistId)
+    value (276)
+    , (277)
+    , (278);

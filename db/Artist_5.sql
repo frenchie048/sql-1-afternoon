@@ -1,1 +1,2 @@
-SELECT * FROM "Artist" WHERE "Name" LIKE '%Black%';
+select * from "Artist"
+    where "Name" like '%Black';

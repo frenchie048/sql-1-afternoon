@@ -1,1 +1,2 @@
-SELECT * FROM "Invoice" WHERE "Total" > 5;
+select * from "Invoice"
+    where "Total" > 5.00;

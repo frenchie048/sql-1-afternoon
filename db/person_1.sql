@@ -1,9 +1,9 @@
-CREATE TABLE PERSON (
-    id SERIAL PRIMARY KEY 
-    , name TEXT
-    , nickname TEXT
-    , age INT
-    , height INT 
-    , city TEXT
-    , favoritecolor TEXT
+create table Person (
+    id  serial primary key
+    , name text 
+    , nickname text
+    , age integer
+    , height integer
+    , city text
+    , favoritecolor text
 );

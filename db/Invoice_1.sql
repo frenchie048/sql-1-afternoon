@@ -1,1 +1,2 @@
-SELECT Count(*) FROM "Invoice" WHERE "BillingCountry" = 'USA';
+select count(*) from "Invoice"
+    where "BillingCountry" = 'USA';

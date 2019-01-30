@@ -1,1 +1,1 @@
-SELECT * FROM Orders;
+select * from Orders;

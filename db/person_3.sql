@@ -1,1 +1,2 @@
-SELECT * FROM Person ORDER BY Height DESC;
+select * from Person
+    order by height desc;

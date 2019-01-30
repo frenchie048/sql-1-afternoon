@@ -1,1 +1,2 @@
-SELECT * FROM "Employee" WHERE "ReportsTo" = (SELECT "EmployeeId" FROM "Employee" WHERE "FirstName" = 'Nancy' AND "LastName" = 'Edwards');
+select * from "Employee"
+    where "ReportsTo" = (select "EmployeeId" from "Employee" where "FirstName" = 'Nancy' and "LastName" = 'Edwards');

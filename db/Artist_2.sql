@@ -1,1 +1,3 @@
-SELECT * FROM "Artist" ORDER BY "Name" Desc LIMIT 10;
+select * from "Artist"
+    order by "Name" desc
+    limit 10;

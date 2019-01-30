@@ -2,31 +2,30 @@ const testInit = require('./helpers/init');
 
 // Method to check if object is contained within array
 expect.extend({
-  toContainObject(received, argument) {
+    toContainObject(received, argument) {
 
-    const pass = this.equals(received, 
-      expect.arrayContaining([
-        expect.objectContaining(argument)
-      ])
-    )
+        const pass = this.equals(received,
+            expect.arrayContaining([
+                expect.objectContaining(argument)
+            ])
+        )
 
-    if (pass) {
-      return {
-        message: () => (`expected ${this.utils.printReceived(received)} not to contain object ${this.utils.printExpected(argument)}`),
-        pass: true
-      }
-    } else {
-      return {
-        message: () => (`expected ${this.utils.printReceived(received)} to contain object ${this.utils.printExpected(argument)}`),
-        pass: false
-      }
+        if (pass) {
+            return {
+                message: () => (`expected ${this.utils.printReceived(received)} not to contain object ${this.utils.printExpected(argument)}`),
+                pass: true
+            }
+        } else {
+            return {
+                message: () => (`expected ${this.utils.printReceived(received)} to contain object ${this.utils.printExpected(argument)}`),
+                pass: false
+            }
+        }
     }
-  }
 });
 
-
 describe('Person Table Tests', () => {
-    let db; 
+    let db;
 
     // Connect to the database
     beforeAll(() => {
@@ -42,20 +41,20 @@ describe('Person Table Tests', () => {
             const persons = await db.query("SELECT * FROM pg_catalog.pg_tables WHERE tablename = 'person'");
             expect(persons[0].tablename).toBe('person');
         });
-    
+
         it('should successfully add a person', async () => {
             const person = {
-                id: 1, 
+                id: 1,
                 name: "Andrew",
                 nickname: "WPM",
                 age: 25,
-                height: 175, 
+                height: 175,
                 city: "Irving",
                 favoritecolor: "Aquamarine"
             };
             await db.query("INSERT INTO person (name, nickname, age, height, city, favoritecolor) VALUES ('Andrew', 'WPM', 25, 175, 'Irving', 'Aquamarine')");
             const persons = await db.query('SELECT * FROM person WHERE id = 1');
-                expect(persons[0]).toEqual(person);
+            expect(persons[0]).toEqual(person);
             // Cleaning up person created
             await db.query('DELETE FROM person');
         });
@@ -107,92 +106,92 @@ describe('Person Table Tests', () => {
     describe('Person 6 Test', () => {
         it('should successfully select people that are older than 20', async () => {
             const persons = await db.person_6();
-            expect(persons).toContainObject({name: 'Josh'});
-            expect(persons).toContainObject({name: 'Andrew'});
-            expect(persons).toContainObject({name: 'Sean'});
-            expect(persons).toContainObject({name: 'Austin'});
-            expect(persons).not.toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Josh' });
+            expect(persons).toContainObject({ name: 'Andrew' });
+            expect(persons).toContainObject({ name: 'Sean' });
+            expect(persons).toContainObject({ name: 'Austin' });
+            expect(persons).not.toContainObject({ name: 'Hunter' });
         });
     });
 
     describe('Person 7 Test', () => {
         it('should successfully select people that are 18', async () => {
             const persons = await db.person_7();
-            expect(persons).toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Hunter' });
         });
     });
 
     describe('Person 8 Test', () => {
         it('should successfully select people that are younger than 20 and older than 27', async () => {
             const persons = await db.person_8();
-            expect(persons).toContainObject({name: 'Hunter'});
-            expect(persons).toContainObject({name: 'Josh'});
+            expect(persons).toContainObject({ name: 'Hunter' });
+            expect(persons).toContainObject({ name: 'Josh' });
         });
     });
 
     describe('Person 9 Test', () => {
         it('should successfully select people that are not 18 years old', async () => {
             const persons = await db.person_9();
-            expect(persons).toContainObject({name: 'Josh'});
-            expect(persons).toContainObject({name: 'Andrew'});
-            expect(persons).toContainObject({name: 'Sean'});
-            expect(persons).toContainObject({name: 'Austin'});
-            expect(persons).not.toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Josh' });
+            expect(persons).toContainObject({ name: 'Andrew' });
+            expect(persons).toContainObject({ name: 'Sean' });
+            expect(persons).toContainObject({ name: 'Austin' });
+            expect(persons).not.toContainObject({ name: 'Hunter' });
         });
     });
 
     describe('Person 10 Test', () => {
         it('should successfully select people whose favorite color is not Orange', async () => {
             const persons = await db.person_10();
-            expect(persons).toContainObject({name: 'Josh'});
-            expect(persons).toContainObject({name: 'Andrew'});
-            expect(persons).not.toContainObject({name: 'Sean'});
-            expect(persons).toContainObject({name: 'Austin'});
-            expect(persons).toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Josh' });
+            expect(persons).toContainObject({ name: 'Andrew' });
+            expect(persons).not.toContainObject({ name: 'Sean' });
+            expect(persons).toContainObject({ name: 'Austin' });
+            expect(persons).toContainObject({ name: 'Hunter' });
         });
     });
 
     describe('Person 11 Test', () => {
         it('should successfully select people whose favorite color is not Orange and is not Blue', async () => {
             const persons = await db.person_11();
-            expect(persons).toContainObject({name: 'Josh'});
-            expect(persons).toContainObject({name: 'Andrew'});
-            expect(persons).not.toContainObject({name: 'Sean'});
-            expect(persons).not.toContainObject({name: 'Austin'});
-            expect(persons).toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Josh' });
+            expect(persons).toContainObject({ name: 'Andrew' });
+            expect(persons).not.toContainObject({ name: 'Sean' });
+            expect(persons).not.toContainObject({ name: 'Austin' });
+            expect(persons).toContainObject({ name: 'Hunter' });
         });
     });
-    
+
     describe('Person 12 Test', () => {
         it('should successfully select people whose favorite color is Purple or Green', async () => {
             const persons = await db.person_12();
-            expect(persons).toContainObject({name: 'Josh'});
-            expect(persons).not.toContainObject({name: 'Andrew'});
-            expect(persons).not.toContainObject({name: 'Sean'});
-            expect(persons).not.toContainObject({name: 'Austin'});
-            expect(persons).toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Josh' });
+            expect(persons).not.toContainObject({ name: 'Andrew' });
+            expect(persons).not.toContainObject({ name: 'Sean' });
+            expect(persons).not.toContainObject({ name: 'Austin' });
+            expect(persons).toContainObject({ name: 'Hunter' });
         });
     });
 
     describe('Person 13 Test', () => {
         it('should successfully select people whose favorite color is Purple, Green or Blue', async () => {
             const persons = await db.person_13();
-            expect(persons).toContainObject({name: 'Josh'});
-            expect(persons).not.toContainObject({name: 'Andrew'});
-            expect(persons).not.toContainObject({name: 'Sean'});
-            expect(persons).toContainObject({name: 'Austin'});
-            expect(persons).toContainObject({name: 'Hunter'});
+            expect(persons).toContainObject({ name: 'Josh' });
+            expect(persons).not.toContainObject({ name: 'Andrew' });
+            expect(persons).not.toContainObject({ name: 'Sean' });
+            expect(persons).toContainObject({ name: 'Austin' });
+            expect(persons).toContainObject({ name: 'Hunter' });
         });
     });
 
     describe('Person 14 Test', () => {
         it('should successfully select people whose city is Irving or LA', async () => {
             const persons = await db.person_14();
-            expect(persons).not.toContainObject({name: 'Josh'});
-            expect(persons).toContainObject({name: 'Andrew'});
-            expect(persons).toContainObject({name: 'Sean'});
-            expect(persons).not.toContainObject({name: 'Austin'});
-            expect(persons).not.toContainObject({name: 'Hunter'});
+            expect(persons).not.toContainObject({ name: 'Josh' });
+            expect(persons).toContainObject({ name: 'Andrew' });
+            expect(persons).toContainObject({ name: 'Sean' });
+            expect(persons).not.toContainObject({ name: 'Austin' });
+            expect(persons).not.toContainObject({ name: 'Hunter' });
         });
     });
 
